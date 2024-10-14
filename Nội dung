@@ -1,0 +1,17 @@
+1. Mục tiêu
+ - Có thể sử dụng ngôn ngữ lập trình java để tương tác với CSDL.
+    + Lấy dữ liệu
+    + Thêm dữ liệu
+    + Cập nhật
+    + Sửa
+
+2. Nội dung
+ - Giới thiệu và ôn tập SQL
+ - Java Database Connectivity
+ - JPA - Hibernate
+
+3. Kiến thức cần có
+ - Java core
+ - CSDL
+
+ 
