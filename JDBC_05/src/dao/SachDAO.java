@@ -4,6 +4,7 @@ import database.JDBCUntil;
 import model.Sach;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -104,16 +105,111 @@ public class SachDAO implements DAOInterface<Sach> {
 
     @Override
     public ArrayList<Sach> selectAll() {
-        return null;
+        ArrayList<Sach> ketQua = new ArrayList<Sach>();
+        try {
+            // Bước 1: tạo kết nối đến CSDL
+            Connection con = JDBCUntil.getConnection();
+
+            // Bước 2: tạo ra đối tượng statement
+            Statement stmt = con.createStatement();
+
+
+            // Bước 3: thực thi câu lệnh SQL
+            String sql = "SELECT * from sach";
+            System.out.println("Bạn đã thực thi: " + sql);
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // Bước 4:
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String tenSach = rs.getString("tenSach");
+                float giaBan = rs.getFloat("giaBan");
+                int namXuatBan = rs.getInt("namXuatBan");
+
+                Sach sach = new Sach(id, tenSach, giaBan, namXuatBan);
+                ketQua.add(sach);
+            }
+
+
+            // Bước 5: Ngắt kết nối
+            JDBCUntil.closeConnection(con);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return ketQua;
     }
 
     @Override
     public Sach selectById(Sach sach) {
-        return null;
+        Sach ketQua = null;
+        try {
+            // Bước 1: tạo kết nối đến CSDL
+            Connection con = JDBCUntil.getConnection();
+
+            // Bước 2: tạo ra đối tượng statement
+            Statement stmt = con.createStatement();
+
+
+            // Bước 3: thực thi câu lệnh SQL
+            String sql = "SELECT * from sach where  id='%s'".formatted(sach.getId());
+            System.out.println("Bạn đã thực thi: " + sql);
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // Bước 4:
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String tenSach = rs.getString("tenSach");
+                float giaBan = rs.getFloat("giaBan");
+                int namXuatBan = rs.getInt("namXuatBan");
+
+                ketQua = new Sach(id, tenSach, giaBan, namXuatBan);
+            }
+
+
+            // Bước 5: Ngắt kết nối
+            JDBCUntil.closeConnection(con);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return ketQua;
     }
 
     @Override
     public ArrayList<Sach> selectByCondition(String condition) {
-        return null;
+        ArrayList<Sach> ketQua = new ArrayList<Sach>();
+        try {
+            // Bước 1: tạo kết nối đến CSDL
+            Connection con = JDBCUntil.getConnection();
+
+            // Bước 2: tạo ra đối tượng statement
+            Statement stmt = con.createStatement();
+
+
+            // Bước 3: thực thi câu lệnh SQL
+            String sql = "SELECT * from sach WHERE " + condition;
+            System.out.println("Bạn đã thực thi: " + sql);
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // Bước 4:
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String tenSach = rs.getString("tenSach");
+                float giaBan = rs.getFloat("giaBan");
+                int namXuatBan = rs.getInt("namXuatBan");
+
+                Sach sach = new Sach(id, tenSach, giaBan, namXuatBan);
+                ketQua.add(sach);
+            }
+
+
+            // Bước 5: Ngắt kết nối
+            JDBCUntil.closeConnection(con);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return ketQua;
     }
 }
