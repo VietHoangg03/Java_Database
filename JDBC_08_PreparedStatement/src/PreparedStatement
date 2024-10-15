@@ -1,0 +1,13 @@
+1. Lỗi SQL injection:
+
+    SELECT * FROM khacHang WHERE hoVaTen LIKE 'Nguyen%';
+    SELECT * FROM khacHang WHERE hoVaTen LIKE 'Nguyen%' OR 1=1;
+
+
+    SELECT * From user where username = 'titv' or password ='123456';
+
+
+    -- user: a1 or 1=1 ; --
+    -- password: 1234
+
+    SELECT * From user where username = 'a1' or 1=1 ; -- or password ='123456';
