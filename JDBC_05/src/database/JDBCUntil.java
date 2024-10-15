@@ -13,7 +13,7 @@ public class JDBCUntil {
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 
             //Các thông số
-            String url = "jdbc:mysql://localhost:3366/ontap";
+            String url = "jdbc:mysql://localhost:3366/nhasach";
             String username = "root";
             String password = "";
 
