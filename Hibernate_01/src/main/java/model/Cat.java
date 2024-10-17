@@ -14,6 +14,12 @@ public class Cat {
     public Cat() {
     }
 
+    public Cat(String name, Date dateOfBirth, boolean sex) {
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.sex = sex;
+    }
+
     public Cat(Integer id, String name, Date dateOfBirth, boolean sex) {
         this.id = id;
         this.name = name;
@@ -53,5 +59,15 @@ public class Cat {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", sex=" + sex +
+                '}';
     }
 }
