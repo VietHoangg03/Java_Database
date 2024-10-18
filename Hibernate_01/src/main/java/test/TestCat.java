@@ -27,8 +27,9 @@ public class TestCat {
 //        System.out.println(c1);
 
         //Test insert
-        Cat c3 = new Cat("Meo beo", new Date(2024,2,25),true);
+        Cat c3 = new Cat("Meo beo 00", new Date(2024,2,25),true);
         Cat c4 = new Cat("Meo gay", new Date(2024,2,25),false);
-        CatDao.getInstance().insert(c4);
+        c3.setId(5);
+        catDao.delete(c3);
     }
 }
