@@ -1,0 +1,6 @@
+- Transient: khi tạo mới đối tượng
+- Persitent: Load từ bên dưới cơ sở dữ liệu lên, trasient chưa kết nối với hibernate session
+,persitent lưu trữ đối tượng tạm thời trong  phiên làm việc đó.
+- Detached: Đã được lưu trữ xuống cơ sở dữ liệu, đã được ngắt kết nối với hibernate session.
+- Removed: Chưa thực sự xoá sau khi commit.
+

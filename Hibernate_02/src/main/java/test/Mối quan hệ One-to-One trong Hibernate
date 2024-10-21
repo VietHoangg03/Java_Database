@@ -1,0 +1,18 @@
+Mối quan hệ:
+One - to - One
+One - to - Many
+Many - to - One
+Many - to - Many => Học trong cơ sở dữ liệu
+
+1. One - to - One
+Ví dụ: Mối quan hệ vợ chồng (kết hôn)
+Một người vợ và một người chồng
+Ví dụ: vợ - chồng
+        vợ - null   (chưa kết hôn)
+        null - chồng (Chưa kết hôn)
+
+Ví dụ: Persion:
+            - ID
+            - name
+            - dateOfBirth
+            - spouse ( quan hệ kết hôn với người nào đấy)

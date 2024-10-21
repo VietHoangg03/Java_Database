@@ -4,6 +4,7 @@ import dao.CatDao;
 import model.Cat;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import util.HibernateUtil;
 
 import java.sql.Date;
@@ -32,11 +33,35 @@ public class TestCat {
 //        c3.setId(5);
 //        catDao.delete(c3);
 
+        // Trong cơ sở dữ liệu => lôi lên thành persision, Đối tượng chưa động chạm gì
+        // với sql thì là transient, và kết thúc kết nối với database li thành trasient
+        // * Phương thức persist(): Sẽ không trả về ID, không báo lỗi khi gặp lỗi, tương
+        // tự hàm save nhưng không trả về giá trị nào cả.
 
-        Cat cat1 = new Cat();
-        cat1.setId(1);
-        catDao.selectById(cat1);
+        // Transient chưa đông chạm setsion
+//        Cat cat1 = new Cat();
+//        cat1.setId(1);
+//
+//        catDao.selectById(cat1); // => Chuyển cat 1 thành persistent
+//
+//        System.out.println(catDao.selectById(cat1)); // thành 1 transion
 
-        System.out.println(catDao.selectById(cat1));
+        Cat result = null;
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                Session session = sessionFactory.openSession();
+                Transaction tr = session.beginTransaction();
+
+                // Thực thi câu lệnh HQL
+                result = session.get(Cat.class,1); //Persision
+
+                tr.commit();
+                session.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

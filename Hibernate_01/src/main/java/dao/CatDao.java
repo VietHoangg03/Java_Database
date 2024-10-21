@@ -51,7 +51,7 @@ public class CatDao implements DAOInterface<Cat> {
                 Transaction tr = session.beginTransaction();
 
                 // Thực thi câu lệnh HQL
-                result = session.get(Cat.class,1);
+                result = session.get(Cat.class,1); //Persision
 
                 tr.commit();
                 session.close();
