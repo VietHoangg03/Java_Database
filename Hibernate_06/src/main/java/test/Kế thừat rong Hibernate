@@ -1,0 +1,3 @@
+- Single_Table: một bảng duy nhất, sẽ lưu vào 1 bảng duy nhất, mỗi thuộc tính
+sẽ tạo thành 1 cột, và đối tượng nào không có thuộc tính đó thì sẽ thành null
+-

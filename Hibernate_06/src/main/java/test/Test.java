@@ -1,14 +1,13 @@
 package test;
 
-import model.CuocHop;
-import model.NhanVien;
+import model.GiaoVien;
+import model.SinhVien;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
 
 import java.sql.Date;
-import java.util.List;
 
 public class Test {
     public static void main(String[] args) {
@@ -17,16 +16,12 @@ public class Test {
             Session session = sessionFactory.openSession();
             Transaction transaction = session.beginTransaction();
 
-            NhanVien nv1 = new NhanVien("NV1","Đinh Việt Hoàng", new Date(2000,10,26));
-            session.saveOrUpdate(nv1);
+            GiaoVien gv = new GiaoVien("GV01","Nguyễn Văn A", new Date(100,1,30),"Hibernate");
+            SinhVien sv = new SinhVien("01234","Sinh Viên 1", new Date(105,2,25),9.8);
 
-            CuocHop ch1 = new CuocHop();
-            ch1.setTenCuocHop("Hội đồng quản trị công ty");
-            ch1.setThoiGian(new Date(2025,2,28));
-            ch1.setDiaDiem("Phòng họp 1");
-            ch1.addNhanVien(nv1);
+            session.save(gv);
+            session.save(sv);
 
-            session.saveOrUpdate(ch1);
 
             transaction.commit();
             session.close();
