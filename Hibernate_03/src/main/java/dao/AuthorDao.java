@@ -5,7 +5,7 @@ import java.util.List;
 public class AuthorDao implements DAOInterface{
     @Override
     public List selectAll() {
-        return List.of();
+        return null;
     }
 
     @Override
