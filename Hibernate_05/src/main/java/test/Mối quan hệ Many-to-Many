@@ -1,0 +1,17 @@
+Mối quan hệ Many-to-Many
+
+Nhân Viên -n------n- Cuộc họp
+
+Nhân viên có thể tham dự 1 cuộc họp A, cuộc họp B,...
+Một cuộc họp cũng có thể có nhiều nhân viên tham dự
+
+Cách giải quyết:
+Tổ chức nó thành bảng không gian.
+Tạo thêm table
+
+Nhân viên           Cuộc họp
+1                       1
+|                       |
+|                       |
+n                       n
+   Nhân Viên- Cuộc họp
