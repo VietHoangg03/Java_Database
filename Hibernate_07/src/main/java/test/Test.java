@@ -16,28 +16,22 @@ public class Test {
             Session session = sessionFactory.openSession();
             Transaction transaction = session.beginTransaction();
 
-            DonHang dh1 = new DonHang();
-            dh1.setTenKhachHang("Hoàng Đinh");
-            dh1.setNgayMua(new Date(System.currentTimeMillis()));
+//            DonHang dh1 = new DonHang();
+//            dh1.setTenKhachHang("Hoàng Đinh");
+//            dh1.setNgayMua(new Date(System.currentTimeMillis()));
+//
+//            for (int i = 0; i < 10000; i++) {
+//                ChiTietDonHang chiTietDonHang1 = new ChiTietDonHang();
+//                chiTietDonHang1.setTenSanPham("Mì hảo hảo");
+//                chiTietDonHang1.setSoLuong(5);
+//                chiTietDonHang1.setGiaBan(5000);
+//                chiTietDonHang1.setThanhTien(5*5000);
+//                chiTietDonHang1.setDonHang(dh1);
+//                dh1.addCTDH(chiTietDonHang1);
+//            }
 
-            ChiTietDonHang chiTietDonHang1 = new ChiTietDonHang();
-            chiTietDonHang1.setTenSanPham("Mì hảo hảo");
-            chiTietDonHang1.setSoLuong(5);
-            chiTietDonHang1.setGiaBan(5000);
-            chiTietDonHang1.setThanhTien(5*5000);
-            chiTietDonHang1.setDonHang(dh1);
 
-            ChiTietDonHang chiTietDonHang2 = new ChiTietDonHang();
-            chiTietDonHang2.setTenSanPham("Sữa tươi");
-            chiTietDonHang2.setSoLuong(5);
-            chiTietDonHang2.setGiaBan(5000);
-            chiTietDonHang2.setThanhTien(5*5000);
-            chiTietDonHang2.setDonHang(dh1);
-
-            dh1.addCTDH(chiTietDonHang1);
-            dh1.addCTDH(chiTietDonHang2);
-
-            session.saveOrUpdate(dh1);
+           // session.saveOrUpdate(dh1);
 
             //Cascode ALL : Khi sửa dữ liệu hoặc xoá một mối quan hệ của đơn hàng
             // Sẽ xoá luôn dữ liệu ở thằng con
@@ -51,6 +45,21 @@ public class Test {
             // và cập nhật theo
 
             // Trong thực tế thì dùng CascadeType.ALL nhiều nhất.
+
+            long batDau = System.currentTimeMillis();
+            DonHang dh = session.load(DonHang.class, 1);
+            long ketThuc = System.currentTimeMillis();
+            System.out.println(dh.toString());
+            System.out.println("Thời gian thực hiện câu lệnh là: " +(ketThuc-batDau));
+
+            // fetch = FetchType.EAGER
+            // Có 2 kiểu load dữ liệu là EAGER và LAZY
+            // LAZY: load thẳng đối tượng cần trong bảng
+            // EAGER: Load đối tượng load luôn những thứ phụ thuộc vào nó
+            // => EAGER: chậm hơn LAZY khi cần load dữ liệu ngay
+            // EAGER load hết dữ liệu lên bộ nhớ động khi cần dử dụng sẽ nhanh hơn,
+            // Nhưng khi dữ liệu quá lớn thì không thể hiển thị được nhanh, do đó
+            // Cần Lazy để load từng phần dữ liêu trong data
 
             transaction.commit();
             session.close();

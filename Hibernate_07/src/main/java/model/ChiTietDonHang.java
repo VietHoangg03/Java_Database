@@ -12,7 +12,7 @@ public class ChiTietDonHang {
     private double giaBan;
     private double thanhTien;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="donhang_id")
     private DonHang donHang;
 
@@ -74,5 +74,17 @@ public class ChiTietDonHang {
 
     public void setThanhTien(double thanhTien) {
         this.thanhTien = thanhTien;
+    }
+
+    @Override
+    public String toString() {
+        return "ChiTietDonHang{" +
+                "id=" + id +
+                ", tenSanPham='" + tenSanPham + '\'' +
+                ", soLuong=" + soLuong +
+                ", giaBan=" + giaBan +
+                ", thanhTien=" + thanhTien +
+                ", donHang=" + donHang +
+                '}';
     }
 }

@@ -13,7 +13,11 @@ public class DonHang {
     private String tenKhachHang;
     private Date ngayMua;
 
-    @OneToMany(mappedBy = "donHang", cascade = CascadeType.ALL)
+    //@OneToMany(mappedBy = "donHang", cascade = CascadeType.REMOVE)
+    //@OneToMany(mappedBy = "donHang", cascade = CascadeType.MERGE)
+    //@OneToMany(mappedBy = "donHang", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "donHang", cascade = CascadeType.ALL,
+    fetch = FetchType.LAZY)
     private List<ChiTietDonHang> danhSachChiTiet = new ArrayList<ChiTietDonHang>();
 
     public DonHang() {
@@ -60,5 +64,14 @@ public class DonHang {
 
     public  void addCTDH (ChiTietDonHang chiTietDonHang){
         this.danhSachChiTiet.add(chiTietDonHang);
+    }
+
+    @Override
+    public String toString() {
+        return "DonHang{" +
+                "id=" + id +
+                ", tenKhachHang='" + tenKhachHang + '\'' +
+                ", ngayMua=" + ngayMua +
+                '}';
     }
 }
