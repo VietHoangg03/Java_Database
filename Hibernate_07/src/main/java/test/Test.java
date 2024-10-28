@@ -60,7 +60,9 @@ public class Test {
             // EAGER load hết dữ liệu lên bộ nhớ động khi cần dử dụng sẽ nhanh hơn,
             // Nhưng khi dữ liệu quá lớn thì không thể hiển thị được nhanh, do đó
             // Cần Lazy để load từng phần dữ liêu trong data
-
+            // Khi vào trang web sẽ hiển thị dữ liệu từng phần, đó là lazy loading,
+            // Cái nào tốt hơn thì còn phải tuỳ thuộc vào dự án, khi muốn mọi thứ tức thời
+            // Sẽ dùng EAGER, còn khi dùng đến đâu load đến đấy sẽ dùng LAZY.
             transaction.commit();
             session.close();
         }
